@@ -1,0 +1,155 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.header {
+    text-align: center;
+}
+
+#intro {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: x-large;
+    text-align: center;
+}
+
+#grid_container {
+    display: grid;
+    grid-template-columns: 10% 30% 30% 30%;
+    grid-template-rows: [intro] auto [header] auto [line1] auto [line2] auto [line3] auto [line4] auto [line5] auto;
+    justify-items: stretch;
+}
+
+#steps {
+    grid-column: 1;
+    grid-row-start: 2;
+    width: 8%;
+    left: 0px;
+    background: aliceblue;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.step {
+    grid-column: 1;
+    text-align: center;
+}
+
+.left {
+    grid-column: 2;
+}
+
+.middle {
+    grid-column: 3;
+}
+
+.right {
+    grid-column: 4;
+}
+
+.worksheet {
+    width: 30%;
+    background: aliceblue;
+    border-radius: 1em;
+    padding: 10px;
+}
+
+.worksheet_left {
+    grid-column: 2;
+    grid-row-start: 2;
+}
+
+.worksheet_middle {
+    grid-column: 3;
+    grid-row-start: 2;
+}
+
+.worksheet_right {
+    grid-column: 4;
+    grid-row-start: 2;
+}
+
+.cell {
+    padding: 1em;
+    border-radius: 1em;
+    margin: 2em;
+}
+
+.cell.left {
+    border: 0.1em solid #eae;
+}
+
+.cell.step {
+    border: 0.1em solid #aaeeaa;
+}
+
+.cell.middle {
+    border: 0.1em solid #eeeeaa;
+}
+
+.cell.right {
+    border: 0.1em solid #aaeeee;
+}
+
+.header {
+    padding: 1em;
+    border-radius: 1em;
+    margin: 1em;
+    grid-row: 3;
+}
+
+.h2 {
+    grid-row: 2;
+}
+
+.line1 {
+    grid-row: 4;
+}
+
+.line2 {
+    grid-row: 5;
+}
+
+.line3 {
+    grid-row: 6;
+}
+
+.line4 {
+    grid-row: 7;
+}
+
+.line5 {
+    grid-row: 8;
+}
+
+.user_value {
+    text-align: center;
+    margin: 10px;
+}
+
+.user_value>input[type="text"] {
+    width: 2em;
+}
+
+.shadow {
+    margin: 1em;
+    border-radius: 1em;
+    grid-row-start: 3;
+    grid-row-end: 9;
+}
+
+#stepShadow {
+    background: #eeffee;
+}
+
+#leftShadow {
+    background: rgba(255, 238, 255, 0.5);
+}
+
+#middleShadow {
+    background: rgba(255, 255, 238, 0.5);
+}
+
+#rightShadow {
+    background: rgba(238, 255, 255, 0.5);
+}

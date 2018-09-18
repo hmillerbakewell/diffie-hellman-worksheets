@@ -1,0 +1,165 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="dh.css">
+    <script src="./jquery-3.3.1.min.js"> </script>
+    <script src="./dh.js"> </script>
+</head>
+
+<body>
+    <div id="grid_container">
+        <div id="stepShadow" class="shadow step"></div>
+        <div id="leftShadow" class="shadow left"></div>
+        <div id="middleShadow" class="shadow middle"></div>
+        <div id="rightShadow" class="shadow right"></div>
+        <div id="intro">
+            <p>Diffie-Hellman Worksheet</p>
+        </div>
+        <div class="header step">
+            <p><strong>Step</strong></p>
+        </div>
+        <div class="cell line1 step">
+            1
+        </div>
+        <div class="cell h2 step">
+            Intro
+        </div>
+        <div class="cell line2 step">
+            2
+        </div>
+
+        <div class="cell line3 step">
+            3
+        </div>
+        <div class="cell line4 step">
+            4
+        </div>
+        <div class="cell line5 step">
+            5
+        </div>
+        <div class="header left">
+            <p><strong>Private!</strong></p>
+            <p>Only <strong>YOU</strong> can see this</p>
+        </div>
+        <div class="cell line2 left">
+            You pick a <strong>secret</strong> number (a) less than n.
+            <div class="user_value">a = <input type="text" name="a" /> <span id="a"></span></div>
+        </div>
+
+        <div class="cell line3 left">
+            We will tell everyone a little about your secret number by revealing the remainder of
+            dividing (g to the power of a) by n. First work this out:
+
+            <div class="user_value">A = g^a = <input type="text" name="gan" /> mod n <span id="gan"></span></div>
+            </p>
+        </div>
+        <div class="cell line4 left">
+            Take the number that your partner announed (B) and raise it to the power of your secret number (a),
+            then take the remainder after dividing by n.
+
+            <div class="user_value">B^a = <input type="text" name="Ba" /> mod n <span id="Ba"></span></div>
+        </div>
+
+        <div class="header middle">
+            <p><strong>Public!</strong></p>
+            <p><strong>EVERYONE</strong> can see this</p>
+        </div>
+        <div class="cell h2 left">
+            <p>Working "mod n"</p>
+            <p>
+                "mod n" means "the remainder after dividing by n".
+                For example:
+
+                <div class="user_value">15 = 2*6 + 3, so 15 mod 6 = 3</div>
+            </p>
+        </div>
+        <div class="cell h2 middle">
+            <p>You can use this calculator to work out values mod n:</p>
+            <div class="user_value"><input type="text" name="z" /> = <input type="text" name="zn" disabled />
+                mod <input type="text" name="follower_n" disabled />
+            </div>
+
+            <div class="user_value"><input type="text" name="y" />^<input type="text" name="x" /> = <input type="text"
+                    name="yx" disabled /> mod <input type="text" name="follower_n" disabled /> </div>
+
+            <div class="user_value">(The value of n is set below)</div>
+        </div>
+        <div class="cell h2 right">
+            <p>Another example?</p>
+            <p>
+                The 12 hour clock works "mod 12".
+                14 hours after 11 o'clock is:
+                <div class="user_value">
+                    (11 + 14) mod 12 = (2*12 + 1) mod 12 = 1
+                </div>
+            </p>
+        </div>
+        <div class="cell line1 middle">
+            <strong>Publicly</strong> you and your partner choose a large prime (n) and a smaller number (g)
+            <div class="user_value">n = <input type="text" name="n" /> </div>
+            <div class="user_value">g = <input type="text" name="g" /><span id="g"></span> </div>
+            <div class="user_value"><input type="button" id="refresh" value="Random numbers" /></div>
+        </div>
+        <div class="cell line3 middle">
+            <strong>Publicly</strong> announce your number (A) and your partner will publicly announce (B).
+
+
+            <div class="user_value">A = <input type="text" name="A" /><span id="A"></span> </div>
+
+            <div class="user_value">B = <input type="text" name="B" disabled /> </div>
+            </p>
+        </div>
+        <div class="header right">
+            <p><strong>Private!</strong></p>
+            <p>Normally only <strong>YOUR PARTNER</strong> can see this column</p>
+            <p>(We're showing it to you so you can see how it works.)</p>
+        </div>
+        <div class="cell line2 secret right">
+            Your partner picks their <strong>secret</strong> number (b), but normally you can't see it!
+            <div class="user_value">b = <input type="text" name="b" disabled /> </div>
+        </div>
+
+        <div class="cell line3 secret right">
+            Your partner also works out something to reveal about b.
+
+            <div class="user_value">B = g^b =<input type="text" name="gbn" disabled /> mod n</div>
+        </div>
+        <div class="cell line4 secret right">
+            You partner takes the number you announced (A) and raises it to the power of their secret number
+            (b),
+            then takes the remainder after dividing by n.
+
+            <div class="user_value">A^b = <input type="text" name="Ab" disabled /> mod n </div>
+        </div>
+        <div class="cell line5 left">
+            <p>
+                You should both have the same secret number! (Find the equations marked with a cross if you don't.)
+            </p>
+            <p>
+                Why?
+            </p>
+            <p class="user_value">
+                A^b = (g^a)^b = g^(ab) = (g^b)^a = B^a.
+            </p>
+            <p>
+                Since A^b and B^a are equal normally they are also equal mod n
+            </p>
+        </div>
+        <div class="cell line5 right">
+            <p>
+                You should both have the same secret number! (Find the equations marked with a cross if you don't.)
+            </p>
+            <p>
+                Why?
+            </p>
+            <p class="user_value">
+                B^a = (g^b)^a = g^(ab) = (g^a)^b= A^b.
+            </p>
+            <p>
+                Since A^b and B^a are equal normally they are also equal mod n
+            </p>
+        </div>
+        <div class="cell line5 middle">
+            <p>Anyone listening in can't work out the secret number!</p>
+        </div>
+    </div>
+</body>
