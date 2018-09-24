@@ -1,0 +1,179 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="sc.css">
+    <script src="./jquery-3.3.1.min.js"> </script>
+    <script src="./common.js"> </script>
+    <script src="./sc.js"> </script>
+</head>
+
+<body>
+    <div class="mainText">
+        <h1>Simple Cyphers</h1>
+
+        <h2>
+            Making and Breaking
+        </h2>
+
+        <p>
+            Here's the problem: We have a message we want to send,
+            and we want only certain people to be able to read it.
+            Sometimes we cannot guarantee that only the people we want will be the ones to see the message.
+            <strong>Encryption</strong> is the act of changing of a message so that people cannot read
+            it unless they know how to <strong>decrpyt</strong> the message back again.
+        </p>
+        <p>
+            Encryption is usually spoken about in two parts:
+            There's the <strong>cypher</strong>,
+            which is the general method that you will use to encrypt and decrypt your message.
+            There's also the <strong>key</strong>, which is usually a small but crucial piece of information,
+            without which your opponents will struggle to decrypt your message.
+            Think of it as a locked door:
+            Everyone knows roughly how locks work (and you should assume everyone knows how your cypher works,)
+            but people with the key find it far easier to get through the door.
+        </p>
+        <p>
+            Note that your opponents will find it hard, not impossible, to decrypt messages.
+            They can keep on guessing which key will work until they eventually find the right one.
+            Finding the key is known as <strong>breaking</strong> the encryption.
+            Realistically one usually speaks of how long it will take someone to read your messages.
+            If it takes someone over a hundred years to read your messages to your bank,
+            then it's pretty likely you will have already closed that account by then
+            and so those messages are considered "safe enough."
+        </p>
+
+        <div>
+
+        </div>
+
+        <h2>
+            Letters and numbers
+        </h2>
+
+        <p>
+            The roman alphabet comes in a specific order (A then B then C, etc.) so we can refer to letters either
+            directly
+            <span class="pad">
+                A, B, C ...
+            </span>
+            or by their position in the list <span class="pad">A = 1, B = 2, C = 3, ...</span>
+        </p>
+
+        <p>
+            Here's a table of the letters and their associated number, so you don't have to work it out every time.
+        </p>
+
+        <div class="lookup" id="az126"></div>
+
+        <h2>
+            The Caesar Cypher
+        </h2>
+        <p>
+            Supposedly this cypher was used by Julius Caeser to send orders to generals without spies reading them.
+            It works by taking each letter in turn and shifting it a certain number of places through the alphabet.
+            So if we wanted to shift the letter "B" by 5, we
+            <ul>
+                <li>look up the value for "B", which is 2</li>
+                <li>add 5 to get 7, </li>
+                <li>then look up the letter for 7 which is "G".</li>
+            </ul>
+            This is exactly the same as just counting five letters along from B.
+            What do you think should happen if your number goes higher than 26?
+        </p>
+
+        <p>
+            Try it here: I take the letter
+            <input type="text" name="singleLetter" class="inline" maxlength="1" value="A" />,
+            I shift it by
+            <input type="text" name="singleLetterRot" class="inline" maxlength="2" value="5" />
+            places to the right and get the answer
+            <input type="text" name="singleLetterAfterRot" class="inline" value="" disabled />.
+        </p>
+
+
+        <p>
+            We want to send a message privately.
+            For example, here's a message:
+
+            <div class="standout"><input type="text" name="caesarPlain" value="PARANOID" /></div>
+
+            We want to shift each letter
+            <input type="text" name="caesarRot" class="inline" maxlength="2" value="5" />
+            places to the <strong>right</strong>.
+            This gives us:
+
+            <div class="standout"><input type="text" name="caesarCypher" value="" /></div>
+        </p>
+
+        <p>
+            Caesar's general has just received the message
+            <div class="standout"><input type="text" name="caesarCypher_follow" value="" /></div>
+            So what are they to do with it?
+            Caesar, being organised, told the generals before leaving Rome that each letter was going to be shifted by
+            <input type="text" name="caesarRot_follow" class="inline" maxlength="2" disabled />,
+            (this part is the <strong>key</strong>)
+            so all the generals need to do is shift each letter back again.
+        </p>
+        <p>
+            We want to shift each letter
+            <input type="text" name="caesarUndoRot" class="inline" maxlength="2" value="2" />
+            places to the <strong>left</strong>.
+            This gives us:
+
+            <div class="standout"><input type="text" name="caesarUndo" value="" /></div>
+
+        </p>
+
+
+        <p>
+            Here are some things to think about:
+            <ul>
+                <li> How can you tell if you have broken this cypher?</li>
+                <li> How long would it take you to break this cypher?</li>
+                <li> Why could it be a bad idea to include punctuation?</li>
+            </ul>
+        </p>
+        <h2>
+            The Vigenère Cypher
+        </h2>
+        <p>
+            The Caesar cypher can be broken in just twenty-six guesses,
+            so if your opponent knows what sort of encryption you are using
+            (you should always assume they do know this) then they can break it pretty quickly.
+            There's a way of combining multiple Caesar cyphers, attributed to Blaise de Vigenère
+            in the sixteenth century,
+            that makes use of multiple Caesar cyphers in succession.
+        </p>
+        <p>
+            The Caesar Cypher shifted every single letter by the same number of places.
+            What if we shifted the first letter by, say, 2, then the second by 5, then the next by 2, then 5, then 2, and so on?
+            Instead of having to guess 1 thing from 26 options, your opponents now have to guess 1 thing from 26 x 26 options!
+            Your allies, too, need to know both "2" and "5" (in that order) as the key.
+            But wait! We can convert numbers to letters, and then it makes sense to put them next to each other in order.
+            "2" then "5" is "B" then "E" as letters, so we could just tell our allies the word "BE".
+        </p>
+        <p>
+            The Vigenère Cypher works by taking a word, like "
+            <input type="text" name="vignereEncode" class="" maxlength="12" value="TREE" />
+            ", and using those letters
+            over and over again as though they were keys for Caesar Cyphers.
+        </p>
+
+        <div class="lookup" id="vignereTableEncode"></div>
+
+        <p>
+            So in each column we have: The letter we want to encrypt,
+            the letter we treat as the key for a Caesar Cypher,
+            and then the encrypted letter.
+            Notice that changing one letter in the key affects only some of the encrypted text,
+            but changing the length of the key changes the whole text (apart from the initial few letters.)
+            We decode again using the same key, but doing the Caesar Cyphers backwards.
+            Try putting in different keys here: 
+             <input type="text" name="vignereDecode" class="" maxlength="12" value="TART" />
+       
+        </p>
+
+        <div class="lookup" id="vignereTableDecode"></div>
+
+    </div>
+</body>

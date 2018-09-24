@@ -1,16 +1,3 @@
-var get = function (s) {
-    return $(`input[name=${s}]`).val()
-}
-
-var set = function (s, v) {
-    $(`input[name=${s}]`).val(v)
-}
-
-var calc = function () {
-
-    var a = get("a")
-    var b = get("b")
-}
 
 var newValues = function () {
     var primes = [101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]
