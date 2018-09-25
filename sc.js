@@ -12,7 +12,7 @@ var range = (a, b) => {
     }
 }
 
-var table = (id, contents, headers) => {
+var table = (id, contents, classes, legend) => {
     var acc = ""
 
     for (let row in contents) {
@@ -21,7 +21,16 @@ var table = (id, contents, headers) => {
             .css("grid-column-end", (contents[row].length + 1).toString())
             .css("grid-row", (parseInt(row) + 1).toString())
             .addClass("row")
-            .addClass("row" + (parseInt(row) + 1).toString())
+            .addClass(classes[row])
+            .prop('outerHTML')
+    }
+    if (legend !== undefined && legend.length > 0) {
+        acc += $("<div></div>")
+            .text(legend)
+            .css("grid-column-start", "1")
+            .css("grid-column-end", (contents[0].length + 1).toString())
+            .css("grid-row", (contents.length + 1).toString())
+            .addClass("row")
             .prop('outerHTML')
     }
 
@@ -32,11 +41,6 @@ var table = (id, contents, headers) => {
         .addClass("lookupCell"))
         .prop('outerHTML')
 
-    if (headers !== undefined) {
-        for (let h in headers) {
-            addCell(h, 0, headers[h])
-        }
-    }
     for (let row in contents) {
         for (let col in contents[row]) {
             addCell(row, col, contents[row][col])
@@ -106,8 +110,10 @@ var update = () => {
     table("#vignereTableEncode", [
         vignerePlain,
         repeat(vignereKey1, vignerePlain.length),
-        vignereEncoded
-    ])
+        vignereEncoded],
+        ["plain", "key", "message"],
+        "Vigenère encoding the top row using the midle row."
+    )
 
     var vignereKey2 = san(get("vignereDecode"))
     set("vignereDecode", vignereKey2)
@@ -115,12 +121,14 @@ var update = () => {
     table("#vignereTableDecode", [
         vignereEncoded,
         repeat(vignereKey2, vignerePlain.length),
-        vignere(vignereKey2, vignereEncoded, false)
-    ])
+        vignere(vignereKey2, vignereEncoded, false)],
+        ["message", "key", "plain"],
+        "Vigenère decoding the top row using the midle row."
+    )
 }
 
 $(() => {
     $("input").change(update)
-    table("#az126", [alpha, range(1, 26)])
+    table("#az126", [alpha, range(1, 26)], ["", ""], "")
     update()
 })

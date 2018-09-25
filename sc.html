@@ -1,7 +1,7 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="common.css">
     <link rel="stylesheet" type="text/css" href="sc.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
     <script src="./jquery-3.3.1.min.js"> </script>
     <script src="./common.js"> </script>
     <script src="./sc.js"> </script>
@@ -19,7 +19,7 @@
             Here's the problem: We have a message we want to send,
             and we want only certain people to be able to read it.
             Sometimes we cannot guarantee that only the people we want will be the ones to see the message.
-            <strong>Encryption</strong> is the act of changing of a message so that people cannot read
+            <strong>Encryption</strong> is the act of changing a message so that people cannot read
             it unless they know how to <strong>decrpyt</strong> the message back again.
         </p>
         <p>
@@ -83,11 +83,11 @@
 
         <p>
             Try it here: I take the letter
-            <input type="text" name="singleLetter" class="inline" maxlength="1" value="A" />,
+            <input type="text" name="singleLetter" class="inline plain" maxlength="1" value="A" />,
             I shift it by
-            <input type="text" name="singleLetterRot" class="inline" maxlength="2" value="5" />
+            <input type="text" name="singleLetterRot" class="inline key" maxlength="2" value="5" />
             places to the right and get the answer
-            <input type="text" name="singleLetterAfterRot" class="inline" value="" disabled />.
+            <input type="text" name="singleLetterAfterRot" class="inline message" value="" disabled />.
         </p>
 
 
@@ -95,32 +95,32 @@
             We want to send a message privately.
             For example, here's a message:
 
-            <div class="standout"><input type="text" name="caesarPlain" value="PARANOID" /></div>
+            <div class="standout"><input type="text" class="plain" name="caesarPlain" value="PARANOID" /></div>
 
             We want to shift each letter
-            <input type="text" name="caesarRot" class="inline" maxlength="2" value="5" />
+            <input type="text" name="caesarRot" class="inline key" maxlength="2" value="5" />
             places to the <strong>right</strong>.
             This gives us:
 
-            <div class="standout"><input type="text" name="caesarCypher" value="" /></div>
+            <div class="standout"><input type="text" class="message" name="caesarCypher" value="" disabled /></div>
         </p>
 
         <p>
             Caesar's general has just received the message
-            <div class="standout"><input type="text" name="caesarCypher_follow" value="" /></div>
+            <div class="standout"><input type="text" class="message" name="caesarCypher_follow" value="" disabled /></div>
             So what are they to do with it?
             Caesar, being organised, told the generals before leaving Rome that each letter was going to be shifted by
-            <input type="text" name="caesarRot_follow" class="inline" maxlength="2" disabled />,
+            <input type="text" name="caesarRot_follow" class="inline key" maxlength="2" disabled />,
             (this part is the <strong>key</strong>)
             so all the generals need to do is shift each letter back again.
         </p>
         <p>
             We want to shift each letter
-            <input type="text" name="caesarUndoRot" class="inline" maxlength="2" value="2" />
+            <input type="text" name="caesarUndoRot" class="inline key" maxlength="2" value="2" />
             places to the <strong>left</strong>.
             This gives us:
 
-            <div class="standout"><input type="text" name="caesarUndo" value="" /></div>
+            <div class="standout"><input type="text" name="caesarUndo" class="plain" value="" disabled /></div>
 
         </p>
 
@@ -146,15 +146,18 @@
         </p>
         <p>
             The Caesar Cypher shifted every single letter by the same number of places.
-            What if we shifted the first letter by, say, 2, then the second by 5, then the next by 2, then 5, then 2, and so on?
-            Instead of having to guess 1 thing from 26 options, your opponents now have to guess 1 thing from 26 x 26 options!
+            What if we shifted the first letter by, say, 2, then the second by 5, then the next by 2, then 5, then 2,
+            and so on?
+            Instead of having to guess 1 thing from 26 options, your opponents now have to guess 1 thing from 26 x 26
+            options!
             Your allies, too, need to know both "2" and "5" (in that order) as the key.
-            But wait! We can convert numbers to letters, and then it makes sense to put them next to each other in order.
+            But wait! We can convert numbers to letters, and then it makes sense to put them next to each other in
+            order.
             "2" then "5" is "B" then "E" as letters, so we could just tell our allies the word "BE".
         </p>
         <p>
             The Vigenère Cypher works by taking a word, like "
-            <input type="text" name="vignereEncode" class="" maxlength="12" value="TREE" />
+            <input type="text" name="vignereEncode" class="key" maxlength="12" value="TREE" />
             ", and using those letters
             over and over again as though they were keys for Caesar Cyphers.
         </p>
@@ -168,12 +171,21 @@
             Notice that changing one letter in the key affects only some of the encrypted text,
             but changing the length of the key changes the whole text (apart from the initial few letters.)
             We decode again using the same key, but doing the Caesar Cyphers backwards.
-            Try putting in different keys here: 
-             <input type="text" name="vignereDecode" class="" maxlength="12" value="TART" />
-       
+            Try putting in different keys here:
+            <input type="text" name="vignereDecode" class="key" maxlength="12" value="TRUE" />
+
         </p>
 
         <div class="lookup" id="vignereTableDecode"></div>
 
+
+        <p>
+            More questions:
+            <ul>
+                <li> What happens when you just have a key word that is one letter long?</li>
+                <li> How long would it take you to break this cypher knowing the key has four letters?</li>
+                <li> How long would it take you to break this cypher when you don't know how long the key is?</li>
+            </ul>
+        </p>
     </div>
 </body>

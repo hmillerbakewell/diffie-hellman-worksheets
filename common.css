@@ -1,0 +1,17 @@
+body {
+    line-height: 1.5;
+}
+
+.mainText {
+    margin: auto;
+    max-width: 50em;
+}
+
+input {
+    padding: 0.1em;
+}
+
+input[disabled]{
+    border: 1px solid gray;
+}
+

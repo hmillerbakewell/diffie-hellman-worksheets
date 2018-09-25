@@ -128,7 +128,7 @@ body {
 }
 
 .user_value>input[type="text"] {
-    width: 2em;
+    width: 3em;
 }
 
 .shadow {
@@ -153,3 +153,8 @@ body {
 #rightShadow {
     background: rgba(238, 255, 255, 0.5);
 }
+
+input[disabled]{
+    background-color: #fafafa;
+}
+
