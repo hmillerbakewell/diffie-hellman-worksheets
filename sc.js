@@ -129,6 +129,7 @@ var update = () => {
 
 $(() => {
     $("input").change(update)
+    $("input").keyup(update)
     table("#az126", [alpha, range(1, 26)], ["", ""], "")
     update()
 })

@@ -155,6 +155,7 @@ var updateChanged = function () {
 
 $(function () {
     $("input").change(updateChanged)
+    $("input").keyup(updateChanged)
     $("#refresh").click(newValues)
     newValues()
 })
