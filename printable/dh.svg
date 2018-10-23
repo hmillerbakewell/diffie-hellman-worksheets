@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="dh.svh.svg">
+   sodipodi:docname="dh.svg"
+   inkscape:export-filename="C:\Users\hmill\github\diffie-hellman-worksheets\dh.png"
+   inkscape:export-xdpi="192"
+   inkscape:export-ydpi="192">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -27,9 +30,9 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1"
      inkscape:cx="599.34572"
-     inkscape:cy="391.15708"
+     inkscape:cy="393.7341"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer3"
      showgrid="true"
      showguides="true"
      inkscape:window-width="1920"
@@ -56,6 +59,18 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="bg">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7517"
+       width="297"
+       height="210"
+       x="0"
+       y="4.8319498e-006" />
+  </g>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"

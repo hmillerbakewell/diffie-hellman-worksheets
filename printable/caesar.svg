@@ -15,7 +15,10 @@
    version="1.1"
    id="svg5132"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="caesar.svg">
+   sodipodi:docname="caesar.svg"
+   inkscape:export-filename="C:\Users\hmill\github\diffie-hellman-worksheets\printable\caesar.png"
+   inkscape:export-xdpi="192"
+   inkscape:export-ydpi="192">
   <defs
      id="defs5126" />
   <sodipodi:namedview
@@ -56,10 +59,21 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="bg" />
+  <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-87)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7520"
+       width="297"
+       height="210"
+       x="0"
+       y="87.000008" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot5679"
